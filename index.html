@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Pop-up</title>
+  </head>
+
+  <body>
+    <button class="pop-up-btn" id="pop-up">Click here</button>
+
+    <div class="model">
+      <form class="s">
+        <div class="model-content page1" id="page1">
+          <div class="model-container">
+            <div class="model-adjust">
+              <button class="close1">CLOSE</button>
+              <h2>Get in touch</h2>
+              <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
+              <div class="circles">
+                <div class="circle1" id="step1">1</div>
+                <div class="circle1">2</div>
+                <div class="circle3"><i class="fa fa-check"></i></div>
+              </div>
+              <label>Enquiry type</label><br />
+              <select>
+                <option>General enquiry</option>
+                <option>Designer</option>
+                <option>Developer</option>
+                <option>Tester</option></select
+              ><br />
+              <label>Message</label><br />
+              <textarea
+                class="message"
+                cols="30"
+                rows="8"
+                placeholder="Start typing..."
+              ></textarea>
+              <button class="confirm" id="next">CONFIRM MESSAGE</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="model-content page2" id="page2">
+          <div class="model-container">
+            <div class="model-adjust">
+              <button class="close2">CLOSE</button>
+              <h2>Get in touch</h2>
+              <p>
+                Please provide your contact details so we can get back to you.
+              </p>
+              <div class="circles">
+                <div class="circle1">1</div>
+                <div class="circle1">2</div>
+                <div class="circle3"><i class="fa fa-check"></i></div>
+              </div>
+              <div class="name">
+                <label>First name</label><br />
+                <input type="text" required />
+              </div>
+              <div class="name">
+                <label>Last name</label><br />
+                <input type="text" required />
+              </div>
+              <label>Email</label>
+              <input type="email" placeholder="e.g name@domain.com" required />
+              <label>Telephone</label>
+              <input type="number" placeholder="e.g 01234 567 890" />
+              <input type="checkbox" />
+              <label
+                >I confirm that on submitting this form I am consenting to
+                [company] storing and using the information detailed above.
+                Information on this can be found on in our privacy
+                policy.</label
+              >
+              <div class="back-send-btn">
+                <button class="back p2">&lt; BACK</button>
+                <button class="confirm p2" id="next2">SEND MESSAGE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="model-content page3" id="page3">
+          <div class="model-container">
+            <div class="model-adjust">
+              <button class="close3">CLOSE</button>
+              <h2>Get in touch</h2>
+              <p>
+                Please provide your contact details so we can get back to you.
+              </p>
+              <div class="circles">
+                <div class="circle1">1</div>
+                <div class="circle1">2</div>
+                <div class="circle1"><i class="fa fa-check"></i></div>
+              </div>
+              <div class="big-tick"><i class="fa fa-check tick"></i></div>
+              <h1 class="page3-h1">Thank you for your message.</h1>
+              <p class="page3-p">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam.
+              </p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document.getElementById("pop-up").addEventListener("click", function () {
+        document.querySelector(".model").style.display = "flex";
+        document.querySelector(".page3").style.display = "none";
+        document.querySelector(".page2").style.display = "none";
+        document.querySelector(".page1").style.display = "flex";
+      });
+      document.getElementById("next").addEventListener("click", function () {
+        document.querySelector(".page2").style.display = "flex";
+        document.querySelector(".page1").style.display = "none";
+      });
+      document.getElementById("next2").addEventListener("click", function () {
+        document.querySelector(".page3").style.display = "flex";
+        document.querySelector(".page2").style.display = "none";
+        document.querySelector(".page1").style.display = "none";
+      });
+      document.querySelector(".close1").addEventListener("click", function () {
+        document.querySelector(".model").style.display = "none";
+      });
+      document.querySelector(".close2").addEventListener("click", function () {
+        document.querySelector(".model").style.display = "none";
+      });
+      document.querySelector(".close3").addEventListener("click", function () {
+        document.querySelector(".model").style.display = "none";
+      });
+    </script>
+  </body>
+</html>
