@@ -176,7 +176,7 @@
       var textarea = document.getElementById("message");
 
       function validate() {
-        if (select.value == "Select enquiry type") {
+        if (select.value.trim() == "Select enquiry type") {
           document.getElementById("slt").style.visibility = "visible";
           select.focus();
           return false;
@@ -197,23 +197,23 @@
       }
 
       function validatePage2() {
-        if (firstName.value === "") {
+        if (firstName.value.trim() === "") {
           document.getElementById("fname").style.visibility = "visible";
           firstName.focus();
           return false;
         }
-        if (lastName.value === "") {
+        if (lastName.value.trim() === "") {
           lastName.focus();
           document.getElementById("lname").style.visibility = "visible";
           document.getElementById("lastName").style.borderColor = "red";
           return false;
         }
-        if (email.value === "") {
+        if (email.value.trim() === "") {
           email.focus();
           document.getElementById("mail").style.visibility = "visible";
           return false;
         }
-        if (telephone.value === "") {
+        if (telephone.value.trim() === "") {
           telephone.focus();
           document.getElementById("phone").style.visibility = "visible";
           document.getElementById("phone").style.borderColor = "red";
