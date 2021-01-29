@@ -15,11 +15,11 @@
     <button class="pop-up-btn" id="pop-up">Click here</button>
 
     <div class="model">
-      <form class="s">
+      <button class="close">CLOSE</button>
+      <form method="GET" class="s">
         <div class="model-content page1" id="page1">
           <div class="model-container">
             <div class="model-adjust">
-              <button class="close1">CLOSE</button>
               <h2>Get in touch</h2>
               <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
               <div class="circles">
@@ -28,20 +28,33 @@
                 <div class="circle3"><i class="fa fa-check"></i></div>
               </div>
               <label>Enquiry type</label><br />
-              <select>
+              <select id="select">
+                <option>Select enquiry type</option>
                 <option>General enquiry</option>
                 <option>Designer</option>
                 <option>Developer</option>
-                <option>Tester</option></select
-              ><br />
+                <option>Tester</option>
+              </select>
+              <small id="slt">field is empty</small>
+              <br />
               <label>Message</label><br />
               <textarea
+                id="message"
                 class="message"
                 cols="30"
                 rows="8"
                 placeholder="Start typing..."
+                required
               ></textarea>
-              <button class="confirm" id="next">CONFIRM MESSAGE</button>
+              <small id="sl">field is empty</small>
+              <button
+                type="submit"
+                class="confirm"
+                id="next"
+                onclick="return validate()"
+              >
+                CONFIRM MESSAGE
+              </button>
             </div>
           </div>
         </div>
@@ -49,7 +62,6 @@
         <div class="model-content page2" id="page2">
           <div class="model-container">
             <div class="model-adjust">
-              <button class="close2">CLOSE</button>
               <h2>Get in touch</h2>
               <p>
                 Please provide your contact details so we can get back to you.
@@ -61,16 +73,30 @@
               </div>
               <div class="name">
                 <label>First name</label><br />
-                <input type="text" required />
+                <input id="firstName" type="text" required />
+                <small id="fname">field is empty</small>
               </div>
               <div class="name">
                 <label>Last name</label><br />
-                <input type="text" required />
+                <input id="lastName" type="text" required />
+                <small id="lname">field is empty</small>
               </div>
               <label>Email</label>
-              <input type="email" placeholder="e.g name@domain.com" required />
+              <input
+                id="email"
+                type="email"
+                placeholder="e.g name@domain.com"
+                required
+              />
+              <small id="mail">field is empty</small><br />
               <label>Telephone</label>
-              <input type="number" placeholder="e.g 01234 567 890" />
+              <input
+                id="telephone"
+                type="number"
+                placeholder="e.g 01234 567 890"
+                required
+              />
+              <small id="phone">field is empty</small><br />
               <input type="checkbox" />
               <label
                 >I confirm that on submitting this form I am consenting to
@@ -80,7 +106,13 @@
               >
               <div class="back-send-btn">
                 <button class="back p2">&lt; BACK</button>
-                <button class="confirm p2" id="next2">SEND MESSAGE</button>
+                <button
+                  class="confirm p2"
+                  id="next2"
+                  onclick="return validatePage2()"
+                >
+                  SEND MESSAGE
+                </button>
               </div>
             </div>
           </div>
@@ -89,7 +121,6 @@
         <div class="model-content page3" id="page3">
           <div class="model-container">
             <div class="model-adjust">
-              <button class="close3">CLOSE</button>
               <h2>Get in touch</h2>
               <p>
                 Please provide your contact details so we can get back to you.
@@ -118,24 +149,98 @@
         document.querySelector(".page2").style.display = "none";
         document.querySelector(".page1").style.display = "flex";
       });
-      document.getElementById("next").addEventListener("click", function () {
-        document.querySelector(".page2").style.display = "flex";
-        document.querySelector(".page1").style.display = "none";
+      // document.getElementById("next").addEventListener("click", function () {
+      //   document.querySelector(".page2").style.display = "flex";
+      //   document.querySelector(".page1").style.display = "none";
+      // });
+      // document.getElementById("next2").addEventListener("click", function () {
+      //   document.querySelector(".page3").style.display = "flex";
+      //   document.querySelector(".page2").style.display = "none";
+      //   document.querySelector(".page1").style.display = "none";
+      // });
+      document.querySelector(".close").addEventListener("click", function () {
+        document.querySelector(".model").style.display = "none";
       });
-      document.getElementById("next2").addEventListener("click", function () {
-        document.querySelector(".page3").style.display = "flex";
+      document.querySelector(".back").addEventListener("click", function () {
         document.querySelector(".page2").style.display = "none";
-        document.querySelector(".page1").style.display = "none";
+        document.querySelector(".page1").style.display = "flex";
       });
-      document.querySelector(".close1").addEventListener("click", function () {
-        document.querySelector(".model").style.display = "none";
-      });
-      document.querySelector(".close2").addEventListener("click", function () {
-        document.querySelector(".model").style.display = "none";
-      });
-      document.querySelector(".close3").addEventListener("click", function () {
-        document.querySelector(".model").style.display = "none";
-      });
+
+      // const select = document.getElementById("select");
+      // const message = document.getElementById("message");
+      var firstName = document.getElementById("firstName");
+      var lastName = document.getElementById("lastName");
+      var email = document.getElementById("email");
+      var telephone = document.getElementById("telephone");
+      var select = document.getElementById("select");
+      var textarea = document.getElementById("message");
+
+      function validate() {
+        if (select.value == "Select enquiry type") {
+          document.getElementById("slt").style.visibility = "visible";
+          select.focus();
+          return false;
+        }
+        else if (textarea.value.length <= 0) {
+          textarea.focus();
+          document.getElementById("sl").style.visibility = "visible";
+          return false;
+        } else {
+          document
+            .getElementById("next")
+            .addEventListener("click", function () {
+              document.querySelector(".page2").style.display = "flex";
+              document.querySelector(".page1").style.display = "none";
+            });
+        }
+        return false;
+      }
+
+      function validatePage2() {
+        if (firstName.value === "") {
+          document.getElementById("fname").style.visibility = "visible";
+          firstName.focus();
+          return false;
+        }
+        if (lastName.value === "") {
+          lastName.focus();
+          document.getElementById("lname").style.visibility = "visible";
+          document.getElementById("lastName").style.borderColor = "red";
+          return false;
+        }
+        if (email.value === "") {
+          email.focus();
+          document.getElementById("mail").style.visibility = "visible";
+          return false;
+        }
+        if (telephone.value === "") {
+          telephone.focus();
+          document.getElementById("phone").style.visibility = "visible";
+          document.getElementById("phone").style.borderColor = "red";
+          return false;
+        } else {
+          document
+            .getElementById("next2")
+            .addEventListener("click", function () {
+              document.querySelector(".page3").style.display = "flex";
+              document.querySelector(".page2").style.display = "none";
+              document.querySelector(".page1").style.display = "none";
+            });
+        }
+        return false;
+      }
     </script>
   </body>
 </html>
+
+<!-- 1. How to add event listener ( click )
+2. How to hide and show the elements
+3.  diff b/w window and document
+4. diff b/w getElementById and querySelector() 
+5. document.getElementsByClassName  and document.query
+6. how to get any input value.
+
+1. https://keycode.info/ ( apply on `Esc` press )
+2. Use keyboard to go back and forth ( arrow keys )
+3. var/let/const ( mdn )
+4. arrow function ( mdn ) -->

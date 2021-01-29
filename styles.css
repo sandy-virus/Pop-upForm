@@ -24,16 +24,22 @@ body {
   left: 45%;
 }
 
+small{
+  font-size: 12px;
+  color: red;
+  visibility: hidden;
+}
+
 .pop-up-btn:hover {
   background-color: #333;
 }
 
 .model {
-  z-index: 111;
+  /* z-index: 111; */
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 5%;
+  top: 2%;
   display: none;
   justify-content: center;
 }
@@ -86,14 +92,13 @@ div#page2 .circle1,
   color: white;
 }
 
-.close1,
-.close2,
-.close3 {
+.close {
   position: absolute;
   top: 12%;
   left: 86%;
   border: none;
   background: none;
+  z-index: 2;
   /* padding: 50px 50px 0px 0px; */
   font-weight: 600;
   font-size: 12px;
@@ -143,7 +148,7 @@ label {
 
 select {
   width: 100%;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   height: 48px;
   background-color: rgb(233, 233, 233);
   border: none;
@@ -187,10 +192,10 @@ p {
 }
 input {
   width: 98%;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   height: 2.5rem;
   background-color: rgb(233, 233, 233);
-  border: none;
+  border:  rgb(233, 233, 233) 1px solid;
   outline: none;
 }
 
@@ -225,4 +230,12 @@ i.fa.fa-check.tick {
 .page3-p {
   margin-top: 1em;
   font-size: 16px;
+}
+@media screen and (max-width: 400px) {
+  .model-container {
+    width: 100%;
+  }
+  .model-adjust {
+    width: 100%;
+  }
 }
