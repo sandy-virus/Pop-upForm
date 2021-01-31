@@ -108,8 +108,8 @@ document.getElementById("pop-up").addEventListener("click", function () {
     }
   }
 
-  textarea.addEventListener('textInput', categoryError);
-  function categoryError(){
+  textarea.addEventListener('textInput', msgError);
+  function msgError(){
     if (textarea.value.length >= 1) {
       msg.style.visibility = "hidden";
       textarea.style.borderColor = "green";
